@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost and Found</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lostitems/css/style.css' %}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    {% csrf_token %}
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Lost and Found</h1>
+        <div id="itemsContainer" class="items-grid"></div>
+        <div class="button-container">
+            <button id="reportButton" class="report-button">
+                <i data-lucide="plus-circle"></i>
+                Report Found Item
+            </button>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>Report Found Item</h2>
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="title">
+                        <i data-lucide="type"></i>
+                        Title
+                    </label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">
+                        <i data-lucide="align-left"></i>
+                        Description
+                    </label>
+                    <textarea id="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="location">
+                        <i data-lucide="map-pin"></i>
+                        Location Found
+                    </label>
+                    <input type="text" id="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">
+                        <i data-lucide="image"></i>
+                        Image
+                    </label>
+                    <input type="file" id="image" accept="image/*" required>
+                </div>
+                <button type="submit" class="submit-button">
+                    <i data-lucide="upload"></i>
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="detailModal" class="modal">
+        <div class="modal-content detail-modal-content">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <div id="chatModal" class="modal">
+        <div class="modal-content chat-modal-content">
+            <h2>Chat</h2>
+            <div class="chat-messages" id="chatMessages"></div>
+            <form id="chatForm" class="chat-form">
+                <input type="text" id="messageInput" placeholder="Type your message..." required>
+                <button type="submit" class="chat-submit-button">
+                    <i data-lucide="send"></i>
+                    Send
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'lostitems/js/main.js' %}"></script>
+</body>
+</html>
+
