@@ -1,0 +1,51 @@
+{% extends 'lostitems/base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container landing-page">
+    <section class="hero">
+        <h1 class="title">Welcome to Lost & Found</h1>
+        <p class="hero-subtitle">
+            Reunite people with their lost belongings easily and efficiently
+        </p>
+        
+        <div class="hero-actions">
+            {% if user.is_authenticated %}
+                <a href="{% url 'item_list' %}" class="report-button">
+                    <i data-lucide="search"></i>
+                    View Lost Items
+                </a>
+            {% else %}
+                <a href="{% url 'register' %}" class="report-button">
+                    <i data-lucide="user-plus"></i>
+                    Get Started
+                </a>
+                <a href="{% url 'login' %}" class="secondary-button">
+                    <i data-lucide="log-in"></i>
+                    Login
+                </a>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i data-lucide="map-pin"></i>
+                <h3>Easy Location Tracking</h3>
+                <p>Find lost items quickly with detailed location information</p>
+            </div>
+            <div class="feature-card">
+                <i data-lucide="message-circle"></i>
+                <h3>Direct Messaging</h3>
+                <p>Communicate directly with item finders and owners</p>
+            </div>
+            <div class="feature-card">
+                <i data-lucide="camera"></i>
+                <h3>Image Recognition</h3>
+                <p>Upload images to help identify and match lost items</p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
